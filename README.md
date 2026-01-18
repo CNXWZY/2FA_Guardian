@@ -1,117 +1,244 @@
-# TOTP 验证码生成器
+# 2FA Guardian
 
-一个简单、安全的 TOTP（基于时间的一次性密码）验证码生成器，运行在 Cloudflare Workers 上。
+<div align="center">
 
-## 功能特性
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?logo=cloudflare)](https://workers.cloudflare.com/)
+[![TypeScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript)](https://www.javascript.com/)
 
-- ✅ 多账号管理：支持添加、删除多个 2FA 账号
-- ✅ 实时验证码：30秒自动刷新，与 Google Authenticator 完全兼容
-- ✅ 一键复制：点击复制按钮快速复制验证码
-- ✅ 时间提醒：圆形进度条显示剩余时间，过期前5秒红色提醒
-- ✅ 本地存储：密钥存储在浏览器 localStorage，不上传服务器
-- ✅ 响应式设计：完美支持手机、平板、电脑
+**安全、私密、现代化的两步验证代码生成器**
 
-## 快速开始
+[在线演示](https://totp-authenticator.cnxwzy.workers.dev) · [快速开始](#-快速开始) · [功能特性](#-功能特性)
 
-### 前置要求
+</div>
 
-1. [Node.js](https://nodejs.org/) (v16 或更高版本)
-2. [Cloudflare 账号](https://dash.cloudflare.com/)
+---
 
-### 安装依赖
+## ✨ 简介
 
+2FA Guardian 是一款运行在 Cloudflare Workers 边缘网络上的开源两步验证（2FA）工具。它完全基于浏览器本地存储，不依赖任何后端服务，为您的账户提供最高级别的安全保障。
+
+### 🎯 为什么选择 2FA Guardian？
+
+- **🔒 绝对隐私**：所有密钥存储在您的浏览器中，从未离开您的设备
+- **⚡ 极速响应**：部署在全球 300+ 城市的边缘节点，毫秒级响应
+- **🎨 极简设计**：现代化 UI 设计，专注于核心功能
+- **🌍 完全免费**：基于 Cloudflare Workers 免费套餐，永久免费使用
+
+---
+
+## 🚀 功能特性
+
+### 核心功能
+- ✅ **多账号管理** - 添加、编辑、删除任意数量的 2FA 账号
+- ✅ **实时验证码** - 30 秒自动刷新，与 Google Authenticator 完全兼容
+- ✅ **一键复制** - 快速复制验证码到剪贴板
+- ✅ **时间追踪** - 可视化倒计时，验证码即将过期时提醒
+
+### 安全特性
+- 🛡️ **本地存储** - 密钥存储在浏览器 localStorage
+- 🛡️ **HTTPS 加密** - 所有传输均通过 SSL 加密
+- 🛡️ **开源透明** - 代码完全开源，可自行审查
+- 🛡️ **零数据收集** - 不收集任何用户数据
+
+### 用户体验
+- 📱 **响应式设计** - 完美适配手机、平板、桌面
+- 🌙 **极简界面** - 专注于核心功能，无广告、无追踪
+- ⚡ **快速加载** - 静态资源 CDN 加速
+- 🎨 **蓝色科技风** - 专业、现代的视觉设计
+
+---
+
+## 📦 快速开始
+
+### 在线使用
+
+直接访问部署地址：https://totp-authenticator.cnxwzy.workers.dev
+
+无需安装，无需注册，即开即用。
+
+### 本地部署
+
+#### 前置要求
+- Node.js >= 16.0.0
+- Cloudflare 账号（免费）
+
+#### 安装步骤
+
+1. **克隆仓库**
+```bash
+git clone https://github.com/CNXWZY/2fa-guardian.git
+cd 2fa-guardian
+```
+
+2. **安装依赖**
 ```bash
 npm install
 ```
 
-### 本地开发
-
+3. **本地开发**
 ```bash
 npm run dev
 ```
+访问 http://localhost:8787
 
-访问 http://localhost:8787 查看应用。
-
-### 部署到 Cloudflare Workers
-
-1. 登录 Cloudflare：
+4. **部署到 Cloudflare**
 ```bash
+# 登录 Cloudflare
 npx wrangler login
-```
 
-2. 部署：
-```bash
+# 部署
 npm run deploy
 ```
 
-部署完成后，你会获得一个类似 `https://totp-authenticator.your-subdomain.workers.dev` 的 URL。
+5. **访问应用**
+部署成功后，您将获得一个类似以下 URL：
+```
+https://2fa-guardian.your-subdomain.workers.dev
+```
 
-## 使用方法
+---
 
-1. 在页面输入框中填写：
-   - **账号名称**：例如 "Google"、"GitHub"、"Microsoft" 等
-   - **2FA 密钥**：从各个服务获取的 Base32 格式密钥
+## 💡 使用指南
 
-2. 点击"添加账号"按钮
+### 添加账号
 
-3. 验证码会自动生成，每30秒刷新一次
+1. 输入 **账号名称**（可选，例如：Google、GitHub）
+2. 输入 **2FA 密钥**（Base32 格式，从各服务获取）
+3. 点击 **"添加账号"** 按钮
 
-4. 点击"复制"按钮可以快速复制验证码
+### 管理账号
 
-5. 圆形进度条显示当前验证码的剩余有效期
+- **复制验证码**：点击验证码右侧的复制按钮
+- **删除账号**：点击账号卡片右上角的删除按钮
+- **清空所有**：点击底部的"清空所有账号"按钮
 
-## 安全说明
+### 获取 2FA 密钥
 
-- ✅ 所有密钥仅存储在您浏览器的 localStorage 中
+大多数服务在启用两步验证时会提供一个密钥（Base32 格式）：
+
+```
+示例：JBSWY3DPEHPK3PXP
+```
+
+该密钥通常位于两步验证设置页面，选择"手动输入"或"手动设置"即可看到。
+
+---
+
+## 🔒 安全说明
+
+### 数据存储
+- ✅ 所有密钥仅存储在您的浏览器 localStorage 中
 - ✅ 密钥不会上传到任何服务器
-- ✅ 使用 HTTPS 加密传输
-- ✅ 完全开源，代码透明
-- ⚠️ 清空浏览器缓存会丢失所有账号信息，请妥善备份密钥
+- ✅ 即使部署服务器被攻破，也无法获取您的密钥
 
-## 如何获取 2FA 密钥
+### 加密传输
+- ✅ 所有通信均通过 HTTPS 加密
+- ✅ Cloudflare Workers 自动提供 SSL 证书
 
-大多数服务在启用两步验证时会提供一个密钥（通常是一串 Base32 字符），例如：
+### 备份建议
+⚠️ **重要提示**：清空浏览器缓存会丢失所有账号信息。
+
+建议备份您的 2FA 密钥，可以使用以下方式：
+- 将密钥存储在密码管理器（如 1Password、Bitwarden）
+- 手动记录在纸上，存放在安全的地方
+- 导出账号数据（未来将支持）
+
+---
+
+## 🛠️ 技术栈
+
+### 前端
+- **JavaScript ES6+** - 原生 JavaScript，无框架依赖
+- **CSS3** - 现代化样式，Flexbox + Grid 布局
+- **Crypto-JS** - HMAC-SHA1 加密算法
+
+### 后端
+- **Cloudflare Workers** - 全球边缘计算平台
+- **Workers Assets** - 静态资源托管
+
+### 存储
+- **Browser localStorage** - 本地数据持久化
+
+---
+
+## 📁 项目结构
 
 ```
-JBSWY3DPEHPK3PXP
-```
-
-这个密钥就是你需要输入到本应用中的内容。
-
-## 技术栈
-
-- **运行时**: Cloudflare Workers
-- **前端**: 原生 JavaScript + CSS
-- **加密**: crypto-js (HMAC-SHA1)
-- **存储**: 浏览器 localStorage
-
-## 项目结构
-
-```
-totp-authenticator/
+2fa-guardian/
 ├── wrangler.toml           # Cloudflare Workers 配置
-├── index.js                # Worker 主入口
+├── index.js                # Worker 入口文件
 ├── package.json            # 项目依赖
 ├── public/
 │   ├── index.html          # 主页面
 │   ├── style.css           # 样式文件
-│   └── app.js              # 前端逻辑
-└── README.md
+│   └── app.js              # 应用逻辑
+└── README.md               # 项目文档
 ```
 
-## 兼容性
+---
 
+## 🌐 兼容性
+
+### 支持的验证器
 - ✅ Google Authenticator
 - ✅ Microsoft Authenticator
 - ✅ Authy
 - ✅ 1Password
 - ✅ Bitwarden
-- ✅ 所有支持 TOTP 的验证器应用
+- ✅ 所有支持 TOTP 协议的应用
 
-## License
+### 浏览器支持
+- ✅ Chrome/Edge (最新版)
+- ✅ Firefox (最新版)
+- ✅ Safari (最新版)
+- ✅ Opera (最新版)
 
-MIT
+---
 
-## 贡献
+## 🤝 贡献
 
-欢迎提交 Issue 和 Pull Request！
+我们欢迎所有形式的贡献！
+
+### 如何贡献
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 提交 Pull Request
+
+### 报告问题
+
+如果遇到 Bug 或有功能建议，请在 [Issues](https://github.com/CNXWZY/2fa-guardian/issues) 中提交。
+
+---
+
+## 📄 License
+
+本项目采用 [MIT License](LICENSE) 开源协议。
+
+---
+
+## 🙏 致谢
+
+- [Cloudflare Workers](https://workers.cloudflare.com/) - 强大的边缘计算平台
+- [Crypto-JS](https://github.com/brix/crypto-js) - JavaScript 加密库
+- [TOTP 协议](https://tools.ietf.org/html/rfc6238) - RFC 6238 标准
+
+---
+
+## 📮 联系方式
+
+- GitHub: [@CNXWZY](https://github.com/CNXWZY)
+- 在线演示: [2fa-guardian.workers.dev](https://totp-authenticator.cnxwzy.workers.dev)
+
+---
+
+<div align="center">
+
+**如果这个项目对您有帮助，请给它一个 ⭐️**
+
+Made with ❤️ by [CNXWZY](https://github.com/CNXWZY)
+
+</div>

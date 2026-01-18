@@ -1,15 +1,20 @@
 {
-  "name": "totp-authenticator",
+  "name": "2fa-guardian",
   "version": "1.0.0",
-  "description": "A simple TOTP authenticator running on Cloudflare Workers",
+  "description": "Secure, private, and modern TOTP authenticator running on Cloudflare Workers",
   "main": "index.js",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy"
   },
-  "keywords": ["totp", "2fa", "authenticator", "cloudflare", "workers"],
-  "author": "",
+  "keywords": ["totp", "2fa", "authenticator", "cloudflare", "workers", "security", "otp"],
+  "author": "CNXWZY",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CNXWZY/2fa-guardian.git"
+  },
+  "homepage": "https://github.com/CNXWZY/2fa-guardian#readme",
   "devDependencies": {
     "wrangler": "^3.78.0"
   },

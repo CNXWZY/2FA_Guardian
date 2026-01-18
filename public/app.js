@@ -77,16 +77,13 @@ class AccountManager {
   }
 
   addAccount(name, secret) {
-    if (!name.trim()) {
-      throw new Error('请输入账号名称');
-    }
     if (!secret.trim()) {
       throw new Error('请输入2FA密钥');
     }
 
     const account = {
       id: Date.now().toString(),
-      name: name.trim(),
+      name: name.trim() || `Account #${this.accounts.length + 1}`,
       secret: secret.trim(),
       createdAt: Date.now()
     };
