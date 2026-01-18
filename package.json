@@ -1,0 +1,19 @@
+{
+  "name": "totp-authenticator",
+  "version": "1.0.0",
+  "description": "A simple TOTP authenticator running on Cloudflare Workers",
+  "main": "index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "keywords": ["totp", "2fa", "authenticator", "cloudflare", "workers"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.78.0"
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0"
+  }
+}

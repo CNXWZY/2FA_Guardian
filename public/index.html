@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOTP 验证码生成器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>TOTP 验证码生成器</h1>
+      <p class="subtitle">安全的两步验证工具</p>
+    </header>
+
+    <main>
+      <div class="add-account">
+        <input type="text" id="accountName" placeholder="账号名称（如：Google, GitHub）" autocomplete="off">
+        <input type="text" id="secretKey" placeholder="2FA 密钥（Base32 格式）" autocomplete="off">
+        <button id="addBtn">添加账号</button>
+      </div>
+
+      <div class="accounts-list" id="accountsList"></div>
+
+      <div id="emptyState" class="empty-state">
+        <p>暂无账号，请添加您的 2FA 密钥</p>
+        <p class="hint">密钥存储在浏览器本地，不会上传到服务器</p>
+      </div>
+    </main>
+
+    <footer>
+      <button id="clearAll" class="clear-all">清空所有账号</button>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

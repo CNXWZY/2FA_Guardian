@@ -1,0 +1,317 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+  color: #333;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+main {
+  padding: 30px 20px;
+}
+
+.add-account {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.add-account input {
+  padding: 12px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.add-account input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.add-account button {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.add-account button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.accounts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.account-item {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s;
+}
+
+.account-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+}
+
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.account-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.delete-btn {
+  background: #fee;
+  color: #c33;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  transition: all 0.3s;
+}
+
+.delete-btn:hover {
+  background: #fcc;
+  transform: scale(1.1);
+}
+
+.totp-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.code {
+  font-family: 'SF Mono', Monaco, Consolas, 'Courier New', monospace;
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 4px;
+  flex: 1;
+}
+
+.code.expires-soon {
+  color: #e74c3c;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.code-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.copy-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+}
+
+.timer {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.timer svg {
+  transform: rotate(-90deg);
+}
+
+.timer circle {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.timer .timer-bg {
+  stroke: #e9ecef;
+}
+
+.timer .timer-progress {
+  stroke: #667eea;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.timer .timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+}
+
+.empty-state p {
+  margin-bottom: 10px;
+}
+
+.hint {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+footer {
+  padding: 20px;
+  border-top: 1px solid #e9ecef;
+  text-align: center;
+}
+
+.clear-all {
+  background: transparent;
+  color: #c33;
+  border: 2px solid #fcc;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.clear-all:hover {
+  background: #fee;
+  border-color: #fcc;
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #333;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 1000;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  header {
+    padding: 20px 15px;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
+  main {
+    padding: 20px 15px;
+  }
+
+  .code {
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+
+  .totp-display {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .code-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .copy-btn {
+    flex: 1;
+    padding: 12px;
+  }
+}
